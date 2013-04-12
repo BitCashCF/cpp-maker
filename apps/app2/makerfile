@@ -1,3 +1,0 @@
-maker_module_set_sources(test.cpp)
-
-maker_module_finalize_app()

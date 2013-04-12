@@ -17,3 +17,7 @@ endmacro()
 macro(maker_utils_require relative_file)
   maker_utils_require_abs(${CMAKE_CURRENT_LIST_DIR}/${relative_file}) 
 endmacro()
+
+macro(maker_utils_include_nonexcl relative_file)
+      include(${CMAKE_CURRENT_LIST_DIR}/${relative_file}) 
+endmacro()

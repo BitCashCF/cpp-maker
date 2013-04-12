@@ -1,5 +1,7 @@
 # Bootstrap the basic macros needed for including files etc
-include (${CMAKE_CURRENT_LIST_DIR}/tools/utils.cmake)
+set (MAKER_SYSTEM_PATH ${CMAKE_CURRENT_LIST_DIR})
+
+include (${MAKER_SYSTEM_PATH}/tools/utils.cmake)
 
 maker_utils_require(tools/folders.cmake)
 maker_utils_require(tools/module.cmake)
