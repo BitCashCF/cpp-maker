@@ -1,7 +1,6 @@
-maker_module_set_full_name("Test app for maker make system")
 maker_module_depend(testlib)
-
 maker_module_set_sources(
-	main.cpp)
+	main.cpp
+    another.cpp)
 
-maker_module_finalize_app()
+maker_module_finalize()
