@@ -1,3 +1,0 @@
-macro(maker_module_set_full_name full_name)
-  message("setting full name to ${full_name}")
-endmacro()

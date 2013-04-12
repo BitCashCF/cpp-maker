@@ -1,2 +1,0 @@
-/Users/meros/dev/cmaker/build/CMakeFiles/app_app2.dir
-/Users/meros/dev/cmaker/build/CMakeFiles/app_testapp.dir

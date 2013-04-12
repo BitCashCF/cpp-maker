@@ -1,5 +1,0 @@
-include (maker_utils.cmake)
-
-macro(maker_init)
-      maker_folder_default_root()
-endmacro(maker_init)

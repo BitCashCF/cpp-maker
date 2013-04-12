@@ -1,5 +1,0 @@
-macro (maker_folders_default_root)
-      include_directories (apps)
-      include_directories (libs)
-      include_directories (ext-libs)
-endmacro ()
