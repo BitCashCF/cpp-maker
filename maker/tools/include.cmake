@@ -14,5 +14,10 @@ endmacro()
 
 # Include file relative the current file, even if included before
 macro(maker_include relative_file)
-  include(${CMAKE_CURRENT_LIST_DIR}/${relative_file}) 
+  maker_include_abs(${CMAKE_CURRENT_LIST_DIR}/${relative_file}) 
+endmacro()
+
+# Include file relative the current file, even if included before
+macro(maker_include_abs abs_file)
+  include(${abs_file}) 
 endmacro()
