@@ -5,7 +5,9 @@
 
 using namespace std;
 
-void testfunction () {
+int testfunction () {
 	cout << "Inside a library" << endl;
     testfunction2();
+    
+    return 42;
 }

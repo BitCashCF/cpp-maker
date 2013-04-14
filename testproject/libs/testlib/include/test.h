@@ -1,1 +1,1 @@
-void testfunction ();
+int testfunction ();
