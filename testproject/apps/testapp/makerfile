@@ -3,5 +3,3 @@ maker_module_depend(boost)
 maker_module_set_sources(
 	main.cpp
     another.cpp)
-
-maker_module_finalize()

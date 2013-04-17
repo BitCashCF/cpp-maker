@@ -27,31 +27,6 @@ macro(maker_module_set_sources)
   endforeach()
 endmacro()
 
-
-# End every lib with this:
-macro(maker_module_finalize)
-  maker_module_debug_log("finalizing")
-  
-  # include the makerfile in sources to get it to show in xcode etc
-  maker_module_set_sources(makerfile)
-  
-  if(${MAKER_MODULE_TYPE} MATCHES "app")
-    # Create app
-    add_executable (${MAKER_MODULE_TARGET_NAME} ${MAKER_MODULE_SOURCES})
-  endif()
-  if(${MAKER_MODULE_TYPE} MATCHES "lib")
-    # Create lib
-    add_library (${MAKER_MODULE_TARGET_NAME} ${MAKER_MODULE_SOURCES})
-    # libs depend on themselves for include etc
-    maker_module_depend(${MAKER_MODULE_NAME})
-  endif()  
-
-    # Set includes
-    _maker_module_set_includes(${MAKER_MODULE_TARGET_NAME})
-    # Set link dependancies
-    _maker_module_set_deps(${MAKER_MODULE_TARGET_NAME})
-endmacro()
-
 macro(_maker_module_set_deps full_module_name)
   foreach(dep_module ${MAKER_MODULE_DEP_MODULES})
     target_link_libraries(${full_module_name} ${dep_module})
@@ -78,12 +53,38 @@ function(_maker_module_create_module module_folder module_type)
       maker_module_debug_log("module found")
       maker_include_once_abs(${module_folder}/makerfile)
       
+      # Finalize module
+      _maker_module_finalize()   
+ 
       # Find gtests
-	  _maker_module_create_tests()
+      _maker_module_create_tests()
     else()
       maker_debug_log("folder does not contain a module")
     endif()
 endfunction()
+
+macro(_maker_module_finalize)
+  maker_module_debug_log("finalizing")
+  
+  # include the makerfile in sources to get it to show in xcode etc
+  maker_module_set_sources(makerfile)
+  
+  if(${MAKER_MODULE_TYPE} MATCHES "app")
+    # Create app
+    add_executable (${MAKER_MODULE_TARGET_NAME} ${MAKER_MODULE_SOURCES})
+  endif()
+  if(${MAKER_MODULE_TYPE} MATCHES "lib")
+    # Create lib
+    add_library (${MAKER_MODULE_TARGET_NAME} ${MAKER_MODULE_SOURCES})
+    # libs depend on themselves for include etc
+    maker_module_depend(${MAKER_MODULE_NAME})
+  endif()  
+
+    # Set includes
+    _maker_module_set_includes(${MAKER_MODULE_TARGET_NAME})
+    # Set link dependancies
+    _maker_module_set_deps(${MAKER_MODULE_TARGET_NAME})
+endmacro()
 
 macro (_maker_module_create_tests)
 	if(EXISTS ${MAKER_MODULE_BASE_PATH}/gtests)
