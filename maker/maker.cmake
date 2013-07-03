@@ -16,9 +16,11 @@ function(maker_init project_name)
 
   maker_moduletype_add("app" "apps")
   maker_moduletype_add("lib" "libs")
+  maker_moduletype_add("protocol" "protocols")
 
   maker_moduledeps_add_type("libs" "libs")
   maker_moduledeps_add_type("ext-libs" "ext-libs")
+  maker_moduledeps_add_type("protocols" "protocols")
 
   maker_moduletype_create_modules()
 endfunction(maker_init)

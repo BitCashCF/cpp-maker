@@ -1,0 +1,4 @@
+FIND_PACKAGE(Protobuf REQUIRED)
+
+maker_module_add_raw_include_dirs(${PROTOBUF_INCLUDE_DIRS})
+maker_module_add_raw_module_deps(${PROTOBUF_LIBRARIES})

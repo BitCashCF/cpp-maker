@@ -19,9 +19,7 @@ macro(maker_module_set_sources)
 endmacro()
 
 macro(_maker_module_set_deps full_module_name)
-  foreach(dep_module ${MAKER_MODULE_DEP_MODULES})
-    target_link_libraries(${full_module_name} ${dep_module})
-  endforeach()
+  target_link_libraries(${full_module_name} ${MAKER_MODULE_DEP_MODULES})
 endmacro()
 
 macro(_maker_module_set_includes full_module_name)
@@ -58,11 +56,11 @@ macro(_maker_module_finalize)
   maker_module_debug_log("finalizing")
   
   # include the makerfile in sources to get it to show in xcode etc
-  maker_module_set_sources(makerfile)
+  # TODO: cannot include this in all targets like this (protoc)!  maker_module_set_sources(makerfile)
 
   # These functions are dynamically created for each module type
-  maker_moduletype_create_target()
   maker_moduletype_add_extra_deps()
+  maker_moduletype_create_target()
 
   # Set includes
   _maker_module_set_includes(${MAKER_MODULE_TARGET_NAME})
