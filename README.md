@@ -1,7 +1,7 @@
 maker
 =====
 
-Maker is a prototyping build system that adds a simple layer between CMake and the project. The design goal is to make setting up PoC and hobby project extremely fast. Creating a project fropm scratch with a handful of apps and libs and tests should only take a few minutes from idea to build.
+Maker is a prototyping build system that adds a simple layer between CMake and the project. The design goal is to make setting up PoC and hobby project extremely fast. Creating a project from scratch with a handful of apps and libs and tests should only take a few minutes from idea to build.
 
 Please see testproject for an example of all currently implemented features (no protobud protocols in there yet).
 
