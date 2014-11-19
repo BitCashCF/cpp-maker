@@ -71,9 +71,11 @@ endmacro()
 macro (_maker_module_create_tests)
   if(EXISTS ${MAKER_MODULE_BASE_PATH}/gtests)
     maker_module_debug_log("found test dir")
+
+    set(_temp ${MAKER_MODULE_INCLUDE_DIRS} ./ ${MAKER_MODULE_BASE_PATH})
     maker_gtest_create_gtest(${MAKER_MODULE_BASE_PATH}/gtests 
       ${MAKER_MODULE_TARGET_NAME}_test
-      "${MAKER_MODULE_INCLUDE_DIRS} ./"
+      "${_temp}"
       ${MAKER_MODULE_TARGET_NAME})
   endif()
 endmacro()
