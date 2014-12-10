@@ -11,7 +11,7 @@ Nomenclature:
 Some important things to consider:
 * module (app/lib/protocol) name is implicit from directory structure. 
 * There needs to be one makerfile/module and it should be placed in the modules root folder
-* Modules must be places in <project root>/<module type>s/<module name>
+* Modules must be places in \<project root\>/\<module type\>s/\<module name\>
 * for libs, you need to place external includable headers in include sub folder, and source in src sub folder 
 * tests are autmatically added when you have a sub folder gstests in your module
 
