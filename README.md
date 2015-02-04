@@ -16,3 +16,5 @@ Some important things to consider:
 * tests are autmatically added when you have a sub folder gstests in your module
 
 So use this if you want to play around and quickly form a project, especially using boost and or protobuf (since it's built into the build system). Use something more advanced (like CMake directly, autotools etc) when you need more control over the output.
+
+Please see the wiki (https://github.com/meros/cpp-maker/wiki) for more information
