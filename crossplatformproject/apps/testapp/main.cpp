@@ -1,6 +1,8 @@
 #include <iostream>
 #include "test.h"
 
+#include <memory> 
+
 using namespace std;
 
 class Test {

@@ -1,9 +1,8 @@
-set( Boost_USE_STATIC_LIBS ON ) 
-FIND_PACKAGE(Boost 1.46.1 REQUIRED COMPONENTS thread system)
+set( Boost_USE_STATIC_LIBS ON )
+FIND_PACKAGE(Boost 1.59 REQUIRED COMPONENTS system)
 
 maker_module_add_raw_include_dirs(${Boost_INCLUDE_DIR})
 maker_module_add_raw_module_deps(${Boost_LIBRARIES})
 
 find_package(Threads)
 maker_module_add_raw_module_deps(${CMAKE_THREAD_LIBS_INIT})
-
