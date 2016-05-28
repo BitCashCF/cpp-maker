@@ -1,0 +1,17 @@
+set(NRF_SDK_COMPONENTS_DIR ${MAKER_SYSTEM_PATH}/platforms/nrf51822/SDK/components/)
+
+add_definitions(-DNRF51)
+
+foreach(component ${NRF_SDK_COMPILE_COMPONENTS} ${NRF_SDK_INCLUDE_COMPONENTS} toolchain/gcc toolchain/CMSIS/Include)
+  maker_module_add_raw_include_dirs(${NRF_SDK_COMPONENTS_DIR}/${component}/)
+endforeach()
+
+foreach(component ${NRF_SDK_COMPILE_COMPONENTS})
+maker_debug_log("YYYYYY ${component}")
+  file(GLOB_RECURSE component_srcs RELATIVE ${MAKER_MODULE_BASE_PATH} ${NRF_SDK_COMPONENTS_DIR}/${component}/*.c)
+  maker_module_set_sources(${component_srcs})
+endforeach()
+
+maker_module_add_raw_include_dirs(${NRF_SDK_COMPONENTS_DIR}/toolchain/)
+file(RELATIVE_PATH system_c ${MAKER_MODULE_BASE_PATH} ${NRF_SDK_COMPONENTS_DIR}/toolchain/system_nrf51.c)
+maker_module_set_sources(${system_c})

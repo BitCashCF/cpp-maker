@@ -1,0 +1,10 @@
+set(NRF_SDK_INCLUDE_COMPONENTS
+  device
+  drivers_nrf/hal
+  libraries/util
+  drivers_nrf/nrf_soc_nosd)
+set(NRF_SDK_COMPILE_COMPONENTS
+    drivers_nrf/delay)
+
+maker_module_depend(nrfsdk)
+maker_module_set_sources(main.cpp)
