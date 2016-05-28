@@ -19,8 +19,11 @@ macro(maker_module_set_sources)
 endmacro()
 
 macro(_maker_module_set_deps full_module_name)
-  # TODO: this is not ok since 2.8.12. Fix! CMP0038
-  target_link_libraries(${full_module_name} ${MAKER_MODULE_DEP_MODULES})
+  list(LENGTH MAKER_MODULE_DEP_MODULES dep_module_count)
+  if (dep_module_count GREATER 0)
+    list(REMOVE_ITEM MAKER_MODULE_DEP_MODULES ${full_module_name})
+    target_link_libraries(${full_module_name} ${MAKER_MODULE_DEP_MODULES})
+  endif()
 endmacro()
 
 macro(_maker_module_set_includes full_module_name)
