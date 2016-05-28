@@ -1,4 +1,0 @@
-maker_module_depend(testlib)
-maker_module_set_sources(
-	main.cpp
-    another.cpp)

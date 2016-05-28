@@ -1,5 +1,7 @@
 macro(maker_moduledeps_dynamic_create module_name folder)
   if(EXISTS ${MAKER_BASE_PATH}/${folder}/${module_name}.makerfile)
     maker_include_abs (${MAKER_BASE_PATH}/${folder}/${module_name}.makerfile)
+  elseif(EXISTS ${MAKER_SYSTEM_PATH}/${folder}/${module_name}.makerfile)
+    maker_include_abs (${MAKER_SYSTEM_PATH}/${folder}/${module_name}.makerfile)
   endif()
 endmacro()

@@ -3,7 +3,7 @@ set (MAKER_SYSTEM_PATH ${CMAKE_CURRENT_LIST_DIR})
 include (${MAKER_SYSTEM_PATH}/tools/include.cmake)
 
 maker_include_once(tools/debug.cmake)
-maker_include_once(tools/gtest.cmake)
+#maker_include_once(tools/gtest.cmake)
 maker_include_once(tools/module.cmake)
 maker_include_once(tools/moduletype.cmake)
 maker_include_once(tools/moduledeps.cmake)

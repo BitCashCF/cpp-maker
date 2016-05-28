@@ -5,6 +5,5 @@ endmacro()
 
 macro(maker_moduletype_create_target)
   include_directories(${MAKER_MODULE_BASE_PATH}/src)
-  add_library (${MAKER_MODULE_TARGET_NAME} ${MAKER_MODULE_SOURCES})  
+  add_library (${MAKER_MODULE_TARGET_NAME} ${MAKER_MODULE_SOURCES})
 endmacro()
-

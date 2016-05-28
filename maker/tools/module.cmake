@@ -12,13 +12,14 @@ endmacro()
 # Add sources to module
 macro(maker_module_set_sources)
   maker_module_debug_log("adding sources: " ${ARGN})
-  
+
   foreach (source ${ARGN})
-    set(MAKER_MODULE_SOURCES ${MAKER_MODULE_SOURCES} ${MAKER_MODULE_BASE_PATH}/${source})			      
+    set(MAKER_MODULE_SOURCES ${MAKER_MODULE_SOURCES} ${MAKER_MODULE_BASE_PATH}/${source})
   endforeach()
 endmacro()
 
 macro(_maker_module_set_deps full_module_name)
+  # TODO: this is not ok since 2.8.12. Fix! CMP0038
   target_link_libraries(${full_module_name} ${MAKER_MODULE_DEP_MODULES})
 endmacro()
 
@@ -31,20 +32,20 @@ endmacro()
 # Used to create a scope for another module
 function(_maker_module_create_module module_folder module_type)
   maker_debug_log("looking in folder ${module_folder} for a valid module")
-  
+
   if(EXISTS ${module_folder}/makerfile)
     set(MAKER_MODULE_BASE_PATH ${module_folder})
     set(MAKER_MODULE_TYPE ${module_type})
     get_filename_component(MAKER_MODULE_NAME ${module_folder} NAME)
-    
+
     set(MAKER_MODULE_TARGET_NAME ${MAKER_MODULE_TYPE}_${MAKER_MODULE_NAME})
 
     maker_module_debug_log("module found")
     maker_include_once_abs(${module_folder}/makerfile)
-    
+
     # Finalize module
-    _maker_module_finalize()   
-    
+    _maker_module_finalize()
+
     # Find gtests
     _maker_module_create_tests()
   else()
@@ -54,7 +55,7 @@ endfunction()
 
 macro(_maker_module_finalize)
   maker_module_debug_log("finalizing")
-  
+
   # include the makerfile in sources to get it to show in xcode etc
   # TODO: cannot include this in all targets like this (protoc)!  maker_module_set_sources(makerfile)
 
@@ -73,7 +74,7 @@ macro (_maker_module_create_tests)
     maker_module_debug_log("found test dir")
 
     set(_temp ${MAKER_MODULE_INCLUDE_DIRS} ./ ${MAKER_MODULE_BASE_PATH})
-    maker_gtest_create_gtest(${MAKER_MODULE_BASE_PATH}/gtests 
+    maker_gtest_create_gtest(${MAKER_MODULE_BASE_PATH}/gtests
       ${MAKER_MODULE_TARGET_NAME}_test
       "${_temp}"
       ${MAKER_MODULE_TARGET_NAME})
