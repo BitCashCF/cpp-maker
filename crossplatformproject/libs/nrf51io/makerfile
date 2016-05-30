@@ -1,0 +1,5 @@
+set(NRF_SDK_INCLUDE_COMPONENTS)
+set(NRF_SDK_COMPILE_COMPONENTS)
+maker_module_depend(nrfsdk)
+
+maker_module_set_sources(include/DigitalOut.hpp)

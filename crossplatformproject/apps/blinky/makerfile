@@ -9,4 +9,6 @@ set(NRF_SDK_COMPILE_COMPONENTS
     drivers_nrf/delay)
 
 maker_module_depend(nrfsdk)
+maker_module_depend(nrf51io)
+
 maker_module_set_sources(main.cpp)
